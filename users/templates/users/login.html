@@ -1,0 +1,20 @@
+{% extends 'events/base.html' %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="exampleInputUsername" class="form-label">Username</label>
+      <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword" class="form-label">Password</label>
+      <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+      <div id="emailHelp" class="form-text">We'll never share your Password with anyone else.</div>
+    </div>
+    <button type="submit" class="btn btn-primary">login</button>
+  </form>
+  <br><br>
+  <div class="mb-3">
+    <a class="btn btn-outline-info" href="{% url 'registration' %}">Don't have an account</a>
+  </div>
+{% endblock content %}

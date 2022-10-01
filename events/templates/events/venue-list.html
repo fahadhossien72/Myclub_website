@@ -1,0 +1,22 @@
+{% extends 'events/base.html' %}
+{% block content %}
+
+
+<table class="table table-hover">
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    {% for venue in venues %}
+    <tr>
+        <td><a href="{% url 'venue-show' venue.id %}">{{venue}}</a></td>
+        <td><a class=" btn btn-primary" href="{% url 'update-venue' venue.id %}">Update</a></td>
+        <td><a class=" btn btn-danger" href="{% url 'delete-venue' venue.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% include 'events/pagination.html' with queryset=venues custom_range=custom_range %}
+
+
+{% endblock content %}

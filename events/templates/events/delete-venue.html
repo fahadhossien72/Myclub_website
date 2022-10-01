@@ -1,0 +1,11 @@
+{% extends 'events/base.html' %}
+{% block content %}
+
+<p>Are you do you want this "{{venue.name}}"?</p>
+<form action="" method="post">
+    {% csrf_token %}
+    <input class="btn btn-danger" type="submit" value="Delete">
+    <a class="btn btn-warning" href="{% url 'venue-list' %}">back</a>
+</form>
+
+{% endblock content %}

@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">My club</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home'  '2022' 'June' %}">March</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'event' %}">Event</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'create-event' %}">Add Event</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'venue' %}">Add Venue</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'venue-list' %}">Venue</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Downlads
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'venue-text' %}">Venue text File</a></li>
+              <li><a class="dropdown-item" href="{% url 'venue-csv' %}">Venue CSV File</a></li>
+              <li><a class="dropdown-item" href="{% url 'venue-pdf' %}">Venue Pdf File</a></li>
+            </ul>
+          </li>
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+          </li>
+          {% endif %}
+        
+        
+        </ul>
+        <form action="{% url 'search-venue' %}" class="d-flex" role="search" method="get">
+          <input class="form-control me-2" type="search" 
+            placeholder="Search venue" name="search" value="{{search_query}}" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>

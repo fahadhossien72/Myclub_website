@@ -1,0 +1,14 @@
+{% extends 'events/base.html' %}
+{% block content %}
+
+{% if submitted %}
+<p>Your Venue was submitted succefully!!!</p>
+{% else %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input class="btn btn-info" type="submit" value="Submit">
+</form>
+{% endif %}
+
+{% endblock content %}
